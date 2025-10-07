@@ -1,0 +1,79 @@
+{
+  "name": "lector-monorepo",
+  "version": "0.0.0",
+  "description": "Headless PDF viewer for React",
+  "author": "andrewdr (https://github.com/andrewdoro)",
+  "type": "module",
+  "private": "true",
+  "scripts": {
+    "build": "turbo run build ",
+    "lint": "turbo run lint",
+     "format": "turbo run format",
+    "prepare": "husky",
+    "test": "turbo run test",
+    "dev": "turbo run dev"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@commitlint/config-conventional": "^19.6.0",
+    "commitlint": "^19.6.1",
+    "turbo": "^2.3.3"
+  },
+  "keywords": [
+    "pdf",
+    "react",
+    "headless",
+    "viewer",
+    "react-pdf",
+    "anaralabs",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anaralabs/lector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anaralabs/lector/issues"
+  },
+  "homepage": "https://github.com/anaralabs/lector",
+  "packageManager": "pnpm@9.5.0",
+  "dependencies": {
+    "husky": "^9.1.7",
+    "semantic-release": "^24.2.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "chore",
+          "ci",
+          "clean",
+          "doc",
+          "feat",
+          "fix",
+          "perf",
+          "ref",
+          "revert",
+          "style",
+          "test"
+        ]
+      ],
+      "subject-case": [
+        0,
+        "always",
+        "sentence-case"
+      ],
+      "body-leading-blank": [
+        2,
+        "always",
+        true
+      ]
+    }
+  }
+}

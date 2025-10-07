@@ -1,0 +1,134 @@
+---
+title: Installation
+description: Complete guide to installing and setting up Lector in your React application
+---
+
+## Prerequisites
+
+Before installing Lector, make sure you have:
+
+- Node.js 16.0 or later
+- A React project (version 16.8 or later)
+- npm, yarn, pnpm, or bun package manager
+
+## Installing the Package
+
+1. Install the main package and its peer dependency:
+
+```bash
+# Using npm
+npm install @anaralabs/lector pdfjs-dist
+
+# Using yarn
+yarn add @anaralabs/lector pdfjs-dist
+
+# Using pnpm
+pnpm add @anaralabs/lector pdfjs-dist
+
+# Using bun
+bun add @anaralabs/lector pdfjs-dist
+```
+
+## Setting up PDF.js Worker
+
+2. Configure the PDF.js worker in your application:
+
+### App Router (default)
+
+In your PDF viewer component:
+
+```tsx
+import { GlobalWorkerOptions } from "pdfjs-dist";
+import "pdfjs-dist/web/pdf_viewer.css";
+
+// Set up the worker
+GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.mjs",
+  import.meta.url
+).toString();
+
+export function PDFViewer() {
+  return (
+    <Root source='/sample.pdf'>
+      <Pages>
+        <Page>
+          <CanvasLayer />
+        </Page>
+      </Pages>
+    </Root>
+  );
+}
+```
+
+### Pages Directory
+
+In your PDF viewer component:
+
+```tsx
+import { Root, Pages, Page, CanvasLayer } from "@anaralabs/lector";
+import "pdfjs-dist/build/pdf.worker.min.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+
+export function PDFViewer() {
+  return (
+    <Root source='/sample.pdf'>
+      <Pages>
+        <Page>
+          <CanvasLayer />
+        </Page>
+      </Pages>
+    </Root>
+  );
+}
+```
+
+## Required Styles
+
+3. Import the required CSS styles. You can do this in your main CSS file or component:
+
+```tsx
+// Import the default PDF viewer styles
+import "pdfjs-dist/web/pdf_viewer.css";
+```
+
+## Verifying Installation
+
+To verify that Lector is properly installed, create a basic PDF viewer component:
+
+```tsx
+import { Root, Pages, Page, CanvasLayer } from "@anaralabs/lector";
+
+function BasicPDFViewer() {
+  return (
+    <Root source='/sample.pdf'>
+      <Pages>
+        <Page>
+          <CanvasLayer />
+        </Page>
+      </Pages>
+    </Root>
+  );
+}
+```
+
+## Troubleshooting
+
+If you encounter any issues during installation:
+
+1. Make sure all peer dependencies are installed
+2. Check that the PDF.js worker is properly configured
+3. Verify that the required CSS files are imported
+4. Ensure your React version is compatible
+
+## Next Steps
+
+Now that you have Lector installed, you can:
+
+<Cards>
+  <Card
+    title='Learn Basic Usage'
+    href='/docs/basic-usage'
+    description='Get started with core components'
+  />
+  <Card title='View Examples' href='/docs/code/basic' description='See Lector in action' />
+</Cards>
